@@ -40,7 +40,7 @@ public class ReadExcel {
         cell.setCellValue(data);
 
         try {
-            File file=new File("src/main/resources/test.xlsx");
+            File file=new File("src/main/resources/triangleTestCases.xlsx");
             FileOutputStream fos =new FileOutputStream(file);
             wb.write(fos);
             fos.close();

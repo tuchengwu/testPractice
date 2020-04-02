@@ -1,18 +1,20 @@
 package exceloperation;
 
+import triangle.Judge;
+
 import java.io.FileNotFoundException;
 
 public class test {
     public static void main(String[] args) {
-        String dataCell = ReadExcel.getDataCell("src/main/resources/test.xlsx", 1, 1);
-        System.out.println(dataCell);
+        String para1=ReadExcel.getDataCell("src/main/resources/triangleTestCases.xlsx",2,2);
+        String para2=ReadExcel.getDataCell("src/main/resources/triangleTestCases.xlsx",3,2);
+        String para3=ReadExcel.getDataCell("src/main/resources/triangleTestCases.xlsx",4,2);
+        Judge judge = new Judge();
+        String result = judge.judge(Integer.parseInt(para1), Integer.parseInt(para2), Integer.parseInt(para3));
         try {
-            ReadExcel.setDataCell("2","src/main/resources/test.xlsx",1,2);
+            ReadExcel.setDataCell(result,"src/main/resources/triangleTestCases.xlsx",2,6);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
-        int data=Integer.parseInt(ReadExcel.getDataCell("src/main/resources/test.xlsx", 2, 1));
-        System.out.println(data);
-
     }
 }
