@@ -13,9 +13,9 @@ public class CaculateNextDay {
      */
     public String getNextDay(int year, int month, int day){
         String result="";
-        String resultYear=null;
-        String resultMonth=null;
-        String resultDay=null;
+        int resultYear=0;
+        int resultMonth=0;
+        int resultDay=0;
         if(year<1900||year>2100){
             return "年份超出适用范围";
         }
@@ -23,26 +23,26 @@ public class CaculateNextDay {
             return "不存在该日期";
         }
         if(day==getDaysNumebr(year,month)){
-            resultDay="01";
+            resultDay=1;
             if(month==12){
-                resultMonth="01";
+                resultMonth=1;
                 year++;
-                resultYear=year+"";
+                resultYear=year;
             }
             else {
                 month++;
-                resultMonth=format(month);
-                resultYear=year+"";
+                resultMonth=month;
+                resultYear=year;
             }
         }
         else
         {
-            resultYear=year+"";
-            resultMonth=format(month);
+            resultYear=year;
+            resultMonth=month;
             day++;
-            resultDay=format(day);
+            resultDay=day;
         }
-        result=resultYear+"-"+resultMonth+"-"+resultDay;
+        result=resultYear+"年"+resultMonth+"月"+resultDay+'日';
         return result;
     }
     public int getDaysNumebr(int year,int month){

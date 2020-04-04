@@ -5,9 +5,11 @@ package exceloperation;
  */
 
 import java.io.*;
+import java.text.SimpleDateFormat;
 import java.util.*;
 import java.util.Map.Entry;
 
+import org.apache.poi.hssf.usermodel.HSSFCellStyle;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -40,7 +42,7 @@ public class ReadExcel {
         cell.setCellValue(data);
 
         try {
-            File file=new File("src/main/resources/triangleTestCases.xlsx");
+            File file=new File(filePath);
             FileOutputStream fos =new FileOutputStream(file);
             wb.write(fos);
             fos.close();
