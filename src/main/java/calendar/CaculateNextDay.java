@@ -12,28 +12,34 @@ public class CaculateNextDay {
      * @return 由年份、月份、日期拼接而成的字符串，如"20000124"
      */
     public String getNextDay(int year, int month, int day){
-        String result="";
-        int resultYear=0;
-        int resultMonth=0;
-        int resultDay=0;
+        String result;
+        int resultYear;
+        int resultMonth;
+        int resultDay;
+        //定义该程序的年份适用范围为1900-2100
         if(year<1900||year>2100){
             return "年份超出适用范围";
         }
-        if(getDaysNumebr(year,month)==0||day<0||day>getDaysNumebr(year,month)){
+        //如果该日期在该月份中不存在或者月份不在1-12中，那么该日期就不存在
+        if(getDaysNumber(year,month)==0||day<0||day> getDaysNumber(year,month)){
             return "不存在该日期";
         }
-        if(day==getDaysNumebr(year,month)){
+        //当日期存在时，根据情况计算下一日的日期
+        //如果是该月最后一天
+        if(day== getDaysNumber(year,month)){
+            //则下一日为下一月第一天
             resultDay=1;
+            //如果是一年最后一月
             if(month==12){
+                //那么下一月为1月，年份+1
                 resultMonth=1;
                 year++;
-                resultYear=year;
             }
             else {
                 month++;
                 resultMonth=month;
-                resultYear=year;
             }
+            resultYear=year;
         }
         else
         {
@@ -42,10 +48,18 @@ public class CaculateNextDay {
             day++;
             resultDay=day;
         }
+        //返回格式为****年*(*)月*(*)日
         result=resultYear+"年"+resultMonth+"月"+resultDay+'日';
         return result;
     }
-    public int getDaysNumebr(int year,int month){
+
+    /**
+     *
+     * @param year 年份
+     * @param month 月份
+     * @return 该月含有的天数
+     */
+    public int getDaysNumber(int year, int month){
         switch (month){
             case 1:
             case 3:
@@ -68,14 +82,6 @@ public class CaculateNextDay {
                 return 30;
             default:
                 return 0;
-        }
-    }
-    public String format(int month){
-        if(month<10){
-            return "0"+month;
-        }
-        else{
-            return month+"";
         }
     }
 

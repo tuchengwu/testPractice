@@ -2,7 +2,7 @@ package commission;
 
 public class testCommission {
     public static void main(String[] args) {
-        CaculateCommission caculateCommission = new CaculateCommission();
-        System.out.println(caculateCommission.caculateCommission(20, 20, 20));
+        CalculateCommission calculateCommission = new CalculateCommission();
+        System.out.println(calculateCommission.calculateCommission(20, 20, 20));
     }
 }
